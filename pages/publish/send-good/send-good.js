@@ -130,19 +130,27 @@ var send = {
             price: e.detail.value
         })
     },
-    getPrice() {
+    getTime() {
         var date = new Date();
-        var y = date.getFullYear();
-        var m = date.getMonth() + 1;
-        var d = date.getDate();
-        var h = date.getHours();
-        var min = date.getMinutes();
-        var s = date.getSeconds();
+        var data = {};
+
         function format(data) {
             return data > 9 ? data : '0' + data
         }
+
+        data.y = date.getFullYear();
+        data.m = format(date.getMonth() + 1);
+        data.d = format(date.getDate());
+        data.h = format(date.getHours());
+        data.min = format(date.getMinutes());
+        data.s = format(date.getSeconds());
+        return data;
+        
+    },
+    getPrice() {
+        var date = this.getTime();
         var data = {
-            departureTime: y + '-' + format(m) + '-' + d + ' ' + format(h) + ':' + format(min),
+            departureTime: date.y + '-' + date.m + '-' + date.d + ' ' + date.h + ':' + date.min,
             arrivalTime: this.data.endTime[0][this.data.endTimeIndex[0]].id + ' ' + this.data.endTime[1][this.data.endTimeIndex[1]].name
         }
         qcloud.request({
@@ -201,6 +209,8 @@ var send = {
     },
     submit() {
         if (!this.verify()) return
+        var date = this.getTime();
+        console.log(this.data.price)
         var data = {
             sender: {
                 name: this.data.send.name,
@@ -210,7 +220,7 @@ var send = {
                 area: this.data.send.region[2],
                 address: this.data.send.address
             },
-            recipients: {
+            receiver: {
                 name: this.data.addressee.name,
                 mobile: this.data.addressee.phone,
                 province: this.data.addressee.region[0],
@@ -219,12 +229,13 @@ var send = {
                 address: this.data.addressee.address
             },
             goodsType: this.data.image,
-            wishArriveTime: this.data.endTime[0][this.data.endTimeIndex[0]].id + ' ' + this.data.endTime[1][this.data.endTimeIndex[1]].name,
+            departureTime: date.y + '-' + date.m + '-' + date.d + ' ' + date.h + ':' + date.min,
+            arrivalTime: this.data.endTime[0][this.data.endTimeIndex[0]].id + ' ' + this.data.endTime[1][this.data.endTimeIndex[1]].name,
             fIndex: {
                 "endTimeIndex": this.data.endTimeIndex,
                 "typeIndex": this.data.typeIndex,
             },
-            price: this.data.pice,
+            price: this.data.pice || 0,
             remark: this.data.remark,
             code: this.data.code
         }
