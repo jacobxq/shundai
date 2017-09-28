@@ -118,8 +118,8 @@ var bring = {
     getPrice() {
         if (this.data.noStartTime || this.data.noStartTime) return
         var data = {
-            departureTime: this.data.startTime[0][this.data.startTimeIndex[0]].id + ' ' + this.data.startTime[1][this.data.startTimeIndex[1]].name + ':00',
-            arrivalTime: this.data.endTime[0][this.data.endTimeIndex[0]].id + ' ' + this.data.endTime[1][this.data.endTimeIndex[1]].name + ':00'
+            departureTime: this.data.startTime[0][this.data.startTimeIndex[0]].id + ' ' + this.data.startTime[1][this.data.startTimeIndex[1]].name,
+            arrivalTime: this.data.endTime[0][this.data.endTimeIndex[0]].id + ' ' + this.data.endTime[1][this.data.endTimeIndex[1]].name
         }
         qcloud.request({
             url: globalData.baseURL + 'xcx/price/calc',

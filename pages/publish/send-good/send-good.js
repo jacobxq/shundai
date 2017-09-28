@@ -142,8 +142,8 @@ var send = {
             return data > 9 ? data : '0' + data
         }
         var data = {
-            departureTime: y + '-' + format(m) + '-' + d + ' ' + format(h) + ':' + format(min) + ':' + format(s),
-            arrivalTime: this.data.endTime[0][this.data.endTimeIndex[0]].id + ' ' + this.data.endTime[1][this.data.endTimeIndex[1]].name + ':00'
+            departureTime: y + '-' + format(m) + '-' + d + ' ' + format(h) + ':' + format(min),
+            arrivalTime: this.data.endTime[0][this.data.endTimeIndex[0]].id + ' ' + this.data.endTime[1][this.data.endTimeIndex[1]].name
         }
         qcloud.request({
             url: globalData.baseURL + 'xcx/price/calc',
