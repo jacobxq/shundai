@@ -154,15 +154,10 @@ var bring = {
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: res => {
                 // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                qcloud.request({
+                wx.uploadFile({
                     url: globalData.baseURL + 'xcx/upload',
-                    method: 'POST',
                     filePath: res.tempFilePaths[0],
                     name: 'file',
-                    header: {
-                        'content-type': 'multipart/form-data'
-                    },
-                    login: true,
                     success: respond => {
                         if (respond.data.result) {
                             this.setData({
