@@ -210,7 +210,6 @@ var send = {
     submit() {
         if (!this.verify()) return
         var date = this.getTime();
-        console.log(this.data.price)
         var data = {
             sender: {
                 name: this.data.send.name,
@@ -235,7 +234,7 @@ var send = {
                 "endTimeIndex": this.data.endTimeIndex,
                 "typeIndex": this.data.typeIndex,
             },
-            price: this.data.pice || 0,
+            price: this.data.price,
             remark: this.data.remark,
             code: this.data.code
         }
