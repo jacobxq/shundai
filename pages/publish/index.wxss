@@ -1,0 +1,39 @@
+/* pages/publish/index.wxss */
+.img image{
+  width: 100%;
+}
+
+.button_group {
+  padding: 40rpx;
+}
+
+.button_group button {
+  margin-bottom: 20rpx;
+}
+
+.info {
+  font-size: 26rpx;
+  text-align: center;
+  color: #B2B2B2;
+}
+
+.info text {
+  color: #576B95;
+}
+
+swiper {
+  text-align: center;
+  height: 80rpx;
+  font-size: 34rpx;
+  color: #999;
+  padding: 0 40rpx 40rpx;
+}
+
+swiper swiper-item {
+	background-color: #fff;
+	border-radius: 4rpx;
+}
+
+swiper swiper-item view {
+	padding-top: 16rpx;
+}

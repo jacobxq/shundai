@@ -1,0 +1,52 @@
+.group .group_item .left{
+	width: 55px;
+}
+
+.code_box {
+	display: flex;
+	justify-content: space-between;
+}
+
+.code_box .code_input {
+	flex: 1;
+}
+
+.code_btn button {
+	margin-left: 4rpx;
+	padding:0 10rpx;
+	min-width: 200rpx;
+}
+
+
+.images_group .images_group_item .text {
+	padding: 20rpx 0 20rpx 20rpx;
+	font-size: 28rpx;
+	color: #888;
+}
+
+.images_group .image {
+	padding: 30rpx 0 30rpx 30rpx;
+	background-color: #fff;
+}
+
+.image_holder {
+	width: 100rpx;
+	height: 100rpx;
+	border: 1px solid #ccc;
+	position: relative;
+}
+
+.image_holder .line {
+	content: '';
+	width: 60rpx;
+	height: 2rpx;
+	background-color: #ccc;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.image_holder .line.line_row {
+	transform: translate(-50%, -50%) rotate(90deg);
+}

@@ -1,0 +1,10 @@
+<view class="wallet_icon">
+  <image src="../../../images/air.png"></image>
+</view>
+<view class="wallet">
+  <text class="title">我的余额</text>
+  <text class="money">120.45</text>
+</view>
+<navigator url="./withdraw-cash/withdraw-cash" open-type="redirectTo">
+	<button class="withdraw">我要提现</button>
+</navigator>

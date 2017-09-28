@@ -1,0 +1,24 @@
+<view class="mt price">
+	<view class="price_name">提现金额</view>
+	<view class="input_box">
+		<text>￥</text><input bindinput="priceChange" placeholder="请填写提现金额"/>
+	</view>
+</view>
+
+<view class="text mt">
+	最高可提现金额¥{{maxPrice}}
+</view>
+
+<view class="mt group">
+	<view class="group_item border_bottom">
+		<view class="group_item_key">微信昵称</view>
+		<view class="group_item_value">{{nickName}}</view>
+	</view>
+</view>
+
+<view class="button_group">
+  <button type="primary" bindtap="submit">确认并提交</button>
+  <navigator open-type="navigateBack">
+    <button>取消</button>
+  </navigator>
+</view>

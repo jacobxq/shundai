@@ -1,0 +1,45 @@
+<view class="flex_box">
+  <view class="flex_item left">
+    <view class="top">出发</view>
+    <picker mode="region" bindchange="startCityChange" value="{{startCity}}">
+        <view class="picker">
+          <text>{{startCity[1]}}</text>
+        </view>
+    </picker>
+  </view>
+  <view class="flex_item center">
+    <view class="top">需求</view>
+    <picker bindchange="typeChange" value="{{typeIndex}}" range="{{type}}">
+      <view class="picker">
+        <text>{{type[typeIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+  <view class="flex_item right">
+    <view class="top">到达</view>
+    <picker mode="region" bindchange="endCityChange" value="{{endCity}}">
+        <view class="picker">
+          <text>{{endCity[1]}}</text>
+        </view>
+    </picker>
+  </view>
+</view>
+
+<!-- <import src="../component/order-list/order-list.wxml"/>
+<template is="list-box" data="{{list: list}}"/> -->
+<view class="list_box">
+  <block wx:for="{{list}}" wx:key="{{item}}" >
+      <view class="list_item" id="{{item.code}}" bindtap="gotoMatch" data-type="{{item.demandType}}" data-self="{{item.owner}}">
+        <view class="icon icon_send" wx:if="{{item.demandType == '寄'}}">{{item.demandType}}</view>
+        <view class="icon icon_bring" wx:else>{{item.demandType}}</view>
+        <view class="city">{{item.departure}}-{{item.arrival}}</view>
+        <view class="date">{{item.departureTime}}</view>
+        <view class="money">￥{{item.price}}</view>
+        <view class="arrow arrows"></view>
+      </view>
+  </block>
+</view>
+
+<view class="refresh-block" wx:if="{{loading}}">
+ <image class="img" animation="{{refreshAnimation}}" src="../../images/refresh.png"></image>
+</view>

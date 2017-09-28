@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/publish/index",
+    "pages/publish/add-address/add-address",
+    "pages/publish/order-result/order-result",
+    "pages/publish/send-good/send-good",
+    "pages/publish/bring-good/bring-good",
+
+    "pages/member/index",
+    "pages/member/order-list/order-list",
+    "pages/member/real-name/real-name",
+    "pages/member/real-name-result/real-name-result",
+    "pages/member/wallet/wallet",
+    "pages/member/wallet/withdraw-cash/withdraw-cash",
+    "pages/member/wallet/withdraw-cash-result/withdraw-cash-result",
+
+    "pages/list/index",
+    "pages/list/sender-match-demand/sender-match-demand",
+    "pages/list/traveler-match-demand/traveler-match-demand",
+    "pages/list/traveler-demand-detail/traveler-demand-detail",
+    "pages/list/sender-demand-detail/sender-demand-detail",
+    "pages/list/match-result/match-result",
+
+    "pages/order/travel-order-detail/travel-order-detail",
+    "pages/order/send-order-detail/send-order-detail",
+    "pages/order/pay-success/pay-success",
+
+    "pages/component/agreement/agreement"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "顺带速运",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#EFEFF4"
+  },
+  "tabBar": {
+    "color": "#7F8389",
+    "selectedColor": "#09BB07",
+    "backgroundColor": "#F7F7FA",
+    "list": [
+      {
+        "pagePath": "pages/publish/index",
+        "text": "发布需求",
+        "iconPath": "images/icon/goods.png",
+        "selectedIconPath": "images/icon/goods2.png"
+      },
+      {
+        "pagePath": "pages/list/index",
+        "text": "需求列表",
+        "iconPath": "images/icon/list.png",
+        "selectedIconPath": "images/icon/list2.png"
+      },
+      {
+        "pagePath": "pages/member/index",
+        "text": "个人中心",
+        "iconPath": "images/icon/member.png",
+        "selectedIconPath": "images/icon/member2.png"
+      }
+    ]
+  }
+}

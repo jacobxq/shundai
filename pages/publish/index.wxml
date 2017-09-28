@@ -1,0 +1,18 @@
+<view class="img">
+  <image src="../../images/air.png"></image>
+</view>
+<view class="button_group">
+  <button type="primary" bindtap="iWandtBring">我要顺带</button>
+  <button bindtap="iWandtSend">我要托付</button>
+</view>
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay interval='2000' vertical circular>
+  <block wx:for="{{swiperData}}" wx:key="{{item}}">
+    <swiper-item>
+      <view>{{item.recipients}}**从{{item.startCity}}到{{item.arrivalCity}}帮{{item.sender}}**顺带了{{item.goodsType}}</view>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="info">
+  客服电话：<text bindtap="makePhone">{{phoneNumber}}</text> | <text bindtap="openAgreement">服务协议</text>
+</view>

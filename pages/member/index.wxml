@@ -1,0 +1,68 @@
+<block wx:if="{{userInfo}}">
+    <view class="menber">
+        <view class="info">
+            <image class="image" src="{{userInfo.avatarUrl}}"></image>
+            <text>{{userInfo.nickName}}</text>
+        </view>
+    </view>
+    <view class="option_box">
+        <navigator url="order-list/order-list" class="no-attestation">
+            <view class="option_item border_bottom">
+                <view class="left">我的订单</view>
+                <view class="arrow"></view>
+            </view>
+        </navigator>
+        <navigator url="wallet/wallet" class="no-attestation">
+            <view class="option_item border_bottom">
+                <view class="left">我的钱包</view>
+                <view class="arrow"></view>
+            </view>
+        </navigator>
+        <block>
+          <navigator url="real-name/real-name" class="no-attestation" wx:if="{{!realNameAuth}}">
+              <view class="option_item border_bottom">
+                  <view class="left">
+                      <text>实名认证</text>
+                  </view>
+                  <view class="right">
+                      <icon type="warn" size="15" />
+                      <text class="right_text">未认证</text>
+                      <view class="arrow"></view>
+                  </view>
+              </view>
+          </navigator>
+          <view class="option_item border_bottom" wx:else>
+              <view class="left">
+                  <text>实名认证</text>
+              </view>
+              <view class="right">
+                  <icon type="success" size="15" />
+                  <text class="right_text">已认证</text>
+              </view>
+          </view>
+        </block>
+        <view class="option_item" bindtap="makePhone">
+            <view class="left">联系客服</view>
+            <view class="arrow"></view>
+        </view>
+    </view>
+    <view class="sign_out" bindtap="sign_out">退出登录</view>
+</block>
+<block wx:else>
+    <view class="menber">
+        <view class="info">
+            <view class="image">
+                登录
+                <!-- <button class='hiddenbtn' bindgetuserinfo='login' open-type='getUserInfo'>点击登录</button> -->
+                <button class='hiddenbtn' bindtap="login">点击登录</button>
+            </view>
+            <text>游客</text>
+        </view>
+    </view>
+    <view class="option_box">
+        <view class="option_item" bindtap="makePhone">
+            <view class="left">联系客服</view>
+            <view class="arrow"></view>
+        </view>
+    </view>
+</block>

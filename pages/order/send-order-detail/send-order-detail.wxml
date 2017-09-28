@@ -1,0 +1,81 @@
+<view class="group mt">
+	<view class="group_item border_bottom">
+		<view class="group_item_key">订单号</view>
+		<view class="group_item_value">{{data.code}}</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">订单状态</view>
+		<view class="group_item_value"><text class="data">{{data.updateTime}} </text><text class="status">{{data.orderStatusCn}}</text></view>
+	</view>
+</view>
+
+<view class="group mt">
+	<view class="group_item border_bottom">
+		<view class="group_item_key">物件类型</view>
+		<view class="group_item_value">{{data.goodsType}}</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">期望到达时间</view>
+		<view class="group_item_value">{{data.arrivalTime}}</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">留言</view>
+		<view class="group_item_value">{{data.demandRemark}}</view>
+	</view>
+</view>
+
+<view class="person_message_info mt">
+	<view class="person_message_info_title">寄件人信息</view>
+	<view class="person_message_info_detail">
+		<view class="name_phone">{{data.sender.name}} <text>{{data.sender.mobile}}</text></view>
+		<view class="address">{{data.sender.province}}{{data.sender.city}}{{data.sender.area}}{{data.sender.address}}</view>
+	</view>
+</view>
+
+<view class="person_message_info mt">
+	<view class="person_message_info_title">收件人信息</view>
+	<view class="person_message_info_detail">
+	<view class="name_phone">{{data.recipients.name}} <text>{{data.recipients.mobile}}</text></view>
+	<view class="address">{{data.recipients.province}}{{data.recipients.city}}{{data.recipients.area}}{{data.recipients.address}}</view>
+	</view>
+</view>
+
+<view class="group mt" wx:if="{{data.orderRole == 'SEND'}}">
+	<view class="group_item border_bottom">
+		<view class="group_item_key">差旅者</view>
+		<view class="group_item_value">{{data.carryerNickName}}</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">手机</view>
+    <view class="group_item_value">{{data.carryerMobile}}</view>
+	</view>
+</view>
+<view class="group mt" wx:else>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">寄件人</view>
+		<view class="group_item_value">{{data.senderNickName}}</view>
+	</view>
+</view>
+
+<view class="button_group mt" wx:if="{{data.orderRole == 'SEND'}}">
+	<block wx:if="{{data.orderStatus == 'NEW'}}">
+		<button bindtap="cancelOrder">取消</button>
+	</block>
+	<block wx:elif="{{data.orderStatus == 'PICKUP'}}">
+		<button bindtap="cancelOrder">取消</button>
+  		<button type="primary" bindtap="payOrder">支付</button>
+	</block>
+	<block wx:elif="{{data.orderStatus == 'PAID'}}">
+  		<button type="primary" bindtap="signOrder">签收</button>
+	</block>
+</view>
+
+<view class="button_group mt" wx:else>
+	<block wx:if="{{data.orderStatus == 'NEW'}}">
+		<button type="primary" bindtap="pickupGoods">确认已揽件</button>
+		<button bindtap="cancelOrder">取消</button>
+	</block>
+	<block wx:elif="{{data.orderStatus == 'PICKUP'}}">
+		<button bindtap="cancelOrder">取消</button>
+	</block>
+</view>

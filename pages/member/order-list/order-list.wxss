@@ -1,0 +1,39 @@
+.list_box  {
+	margin-top: 20rpx;
+}
+
+.list_box .list_item .flex_item {
+	flex: 1;
+	text-align: center;
+	font-size: 30rpx;
+}
+
+.list_box .list_item .arrows {
+	display: inline-block;
+	margin-right:10px;
+	transform:rotate(45deg);
+}
+
+.list_box .list_item .status {
+	text-align: right;
+}
+
+.refresh-block {
+  padding: 30rpx;
+  text-align: center;
+}
+.refresh-block image {
+  height: 50rpx;
+  width: 50rpx;
+  animation: spin2 6s infinite linear;
+}
+
+@keyframes spin2 {
+  0% {
+    transform: rotate(0)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}

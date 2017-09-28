@@ -1,0 +1,261 @@
+/**app.wxss**/
+page {
+  background-color: #EFEFF4;
+}
+
+.border_bottom {
+  border-bottom: 2rpx solid #EFEFF4;
+}
+
+.mt {
+  margin-top: 40rpx;
+}
+
+/* order-list start */
+.list_box {
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+.list_item {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #EFEFF4;
+  line-height: 54rpx;
+}
+
+.list_item .icon {
+  font-size: 36rpx;
+  padding: 0 8rpx;
+  background-color: #1AAD19;
+  color: #fff;
+  border-radius: 4rpx;
+  margin-right: 20rpx;
+}
+
+.list_item .icon.icon_bring {
+  background-color: #E57625;
+}
+
+.list_item .city {
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.list_item .arrow {
+  margin-left: 20rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #c7c7c7;
+  border-right: 4rpx solid #c7c7c7;
+  transform: rotate(45deg) translateY(20rpx);
+}
+
+.list_item .date,
+.list_item .money {
+  color: #888;
+  font-size: 30rpx;
+}
+
+.list_item .money {
+  margin-left: 40rpx;
+}
+/* order-list end */
+
+/* button_group start*/
+.button_group {
+  padding: 40rpx;
+}
+
+.button_group button {
+  margin-bottom: 20rpx;
+}
+/* button_group end*/
+
+/* group start*/
+.group {
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+
+.group_item {
+  display: flex;
+  padding: 20rpx 0;
+  font-size: 34rpx;
+  line-height:54rpx;
+}
+
+.group_item .left {
+  margin-right: 20rpx;
+}
+
+.group_item .center {
+  flex: 1;
+  
+}
+
+.group_item .center input {
+  min-height: 54rpx;
+}
+.group_item .center .placeholder {
+  color: rgb(128,128,128);
+}
+
+.group_item .center .picker {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.group_item .right {
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #c7c7c7;
+  border-right: 4rpx solid #c7c7c7;
+  transform: rotate(45deg) translateY(20rpx);
+}
+
+.group_item .arrow {
+  margin-left: 20rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #c7c7c7;
+  border-right: 4rpx solid #c7c7c7;
+  transform: rotate(45deg) translateY(20rpx);
+}
+
+.group_item .price_box {
+  display: flex;
+  justify-content:flex-end;
+}
+
+.group_item .price_box input {
+  width:250rpx;
+}
+
+.group_item .price_icon {
+  color: #E57625;
+  font-size: 50rpx;
+}
+
+.group_item .text_right {
+  display: flex;
+  justify-content:flex-end;
+}
+
+.group_item .text_right input {
+  width:250rpx;
+}
+
+.group_item .group_item_key {
+  min-width: 100rpx;
+  color: #b2b2b2;
+}
+
+.group_item .group_item_value {
+  flex: 1;
+  text-align: right;
+}
+
+.group_item .group_item_value.price_text {
+  color: #E57625;
+  font-size: 40rpx;
+}
+
+.group_item .group_item_value .data {
+  color: #b2b2b2;
+}
+
+.group_item .group_item_value .status {
+  color: #1AAD19;
+}
+
+.deal {
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #888888;
+}
+
+.deal .deal_checked {
+  display: flex;
+  line-height: 48rpx;
+  margin-top: 10rpx;
+}
+/* group end*/
+
+/* result start*/
+.result {
+  display: flex;
+  flex-direction: column;
+  padding: 80rpx 0;
+  align-items:center;
+}
+
+.result text {
+  margin-top: 50rpx;
+  color: #000;
+}
+
+.result .text {
+  color: #888;
+  font-size: 34rpx;
+  text-align: center;
+  margin-top: 60rpx;
+}
+.result .text view{
+  line-height: 1.5;
+}
+
+.result .button {
+  width: 80%;
+  margin-top: 60rpx;
+}
+/* result end*/
+
+/* footer start*/
+.footer {
+  font-size: 26rpx;
+  text-align: center;
+  color: #B2B2B2;
+  position: fixed;
+  bottom: 20rpx;
+}
+
+.footer text {
+  color: #576B95;
+}
+/* footer end*/
+
+/*person_message_info start*/
+.person_message_info .person_message_info_title {
+  padding-left: 20rpx;
+  font-size: 30rpx;
+  color: #888;
+  margin: 15rpx 0;
+}
+
+.person_message_info .person_message_info_detail {
+  padding: 34rpx 20rpx;
+  background-color: #fff;
+}
+
+.person_message_info_detail .name_phone {
+  color: #222;
+}
+
+.person_message_info_detail .name_phone text{
+  color: #576B95;
+  font-size: 32rpx;
+}
+
+.person_message_info_detail .address {
+  color: #999;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+/*person_message_info end*/
+
+.waybill {
+  color: #576B95;
+}

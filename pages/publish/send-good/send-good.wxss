@@ -1,0 +1,3 @@
+.group_item .right {
+  margin-left: 20rpx;
+}

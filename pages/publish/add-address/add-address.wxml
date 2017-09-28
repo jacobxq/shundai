@@ -1,0 +1,43 @@
+<view class="group mt">
+  <view class="group_item border_bottom">
+    <view class="left">名字</view>
+      <view class="center">
+      <input bindinput="nameChange" value="{{name}}" placeholder="请输入姓名"/>
+    </view>
+  </view>
+
+  <view class="group_item  border_bottom">
+    <view class="left">手机</view>
+      <view class="center">
+        <input type="number" bindinput="phoneChange" value="{{phone}}" placeholder="请输入中国大陆地区手机号"/>
+    </view>
+  </view>
+
+  <view class="group_item  border_bottom">
+    <view class="left">地区</view>
+    <view class="center">
+      <picker mode="region" bindchange="regionChange" value="{{region}}">
+        <view class="picker">
+          <text wx:if="{{region.length > 0}}">{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+          <text wx:else class="placeholder">请选择地区</text>
+        </view>
+      </picker>
+    </view>
+    <view class="right"></view>
+  </view>
+
+  <view class="group_item">
+    <view class="left">地址</view>
+      <view class="center">
+        <input bindinput="addressChange" value="{{address}}" placeholder="具体到街道、门牌号等信息"/>
+    </view>
+  </view>
+</view>
+
+
+<view class="button_group">
+  <button type="primary" disabled="{{disabled}}" bindtap="submitFn">确认并提交</button>
+  <navigator open-type="navigateBack">
+    <button>取消</button>
+  </navigator>
+</view>

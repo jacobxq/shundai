@@ -1,0 +1,64 @@
+<view class="group mt">
+	<view class="group_item border_bottom">
+	    <view class="left">姓名</view>
+	    <view class="center">
+	      <input type="text" bindinput="nameChange" value="{{attestationInfo.name}}" placeholder="请输入真实姓名"/>
+	    </view>
+	  </view>
+	<view class="group_item border_bottom">
+	    <view class="left">身份证</view>
+	    <view class="center">
+	      <input type="text" bindinput="idChange" value="{{attestationInfo.id}}" placeholder="请输入中国大陆公民身份证号"/>
+	    </view>
+	  </view>
+	<view class="group_item border_bottom">
+	    <view class="left">手机</view>
+	    <view class="center">
+	      <input type="number" bindinput="phoneChange" value="{{attestationInfo.phone}}" placeholder="请输入中国大陆地区手机号"/>
+	    </view>
+	  </view>
+	<view class="group_item border_bottom">
+	    <view class="left">验证码</view>
+	    <view class="center code_box">
+	      <view class="code_input">
+	      	<input type="number" bindinput="codeChange" value="{{code}}" placeholder="请输入4位短信验证码"/>
+	      </view>
+	      <view class="code_btn">
+	      	<button size="mini" wx:if="{{!counting}}" bindtap="getCode">手机验证</button>
+	      	<button size="mini" wx:else disabled="true">{{second}}秒后可重发</button>
+	      </view>
+	    </view>
+	  </view>
+</view>
+
+<view class="images_group mt">
+	<view class="images_group_item">
+		<view class="text">请上传完整的身份证正面照片</view>
+		<view class="image">
+			<view class="image_holder" wx:if="{{!attestationInfo.image_front}}" bindtap="uploadImage" data-type="front"><view class="line line_row"></view><view class="line"></view></view>
+			<view wx:else>
+				<image src="{{attestationInfo.image_front}}"></image>
+			</view>
+		</view>
+	</view>
+
+	<view class="images_group_item">
+		<view class="text">请上传完整的身份证反面照片</view>
+		<view class="image">
+			<view class="image_holder" wx:if="{{!attestationInfo.image_verso}}" bindtap="uploadImage" data-type="end"><view class="line line_row"></view><view class="line"></view></view>
+			<view wx:else>
+				<image src="{{attestationInfo.image_verso}}"></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="images_group">
+	<view class="images_group_item">
+		<view class="text">顺带速运平台郑重承诺：依法保护用户隐私，不会向个人或机构透露用户信息。</view>
+	</view>
+</view>
+
+<view class="button_group">
+  <button type="primary" bindtap='submit'>确认并提交</button>
+</view>

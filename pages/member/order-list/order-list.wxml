@@ -1,0 +1,18 @@
+<view class="list_box mt10">
+	<block wx:for="{{list}}" wx:key="{{item}}" >
+	  <view class="list_item" data-type="{{item.orderType}}" data-code="{{item.code}}" bindtap="goToOrderDetail">
+	  	<view class="icon icon_send" wx:if="{{item.orderType == '寄'}}">{{item.orderType}}</view>
+        <view class="icon icon_bring" wx:else>{{item.orderType}}</view>
+	    <view class="flex_item city">{{item.departure}}-{{item.arrival}}</view>
+	    <view class="flex_item date">{{item.arrivalTime}}</view>
+	    <view class="flex_item status">
+		    <text>{{item.orderStatus}}</text>
+		    <view class="arrow arrows"></view>
+	    </view>
+	  </view>
+	</block>
+</view>
+
+<view class="refresh-block" wx:if="{{loading}}">
+	<image class="img" animation="{{refreshAnimation}}" src="../../../images/refresh.png"></image>
+</view>

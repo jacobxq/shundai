@@ -1,0 +1,92 @@
+<view class="group mt">
+	<view class="group_item border_bottom">
+    <view class="left">寄</view>
+    <view class="center">
+      <navigator url="../add-address/add-address?type=send" open-type="redirectTo">
+        <text wx:if="{{!send}}" class="placeholder">请填写寄件人信息</text>
+        <text wx:else>{{send.region[0]}}{{send.region[1]}}{{send.region[2]}}{{send.address}}</text>
+      </navigator>
+    </view>
+    <view class="right"></view>
+  </view>
+
+  <view class="group_item">
+    <view class="left">收</view>
+    <view class="center">
+      <navigator url="../add-address/add-address?type=addressee" open-type="redirectTo">
+        <text wx:if="{{!addressee}}" class="placeholder">请填写收件人信息</text>
+        <text wx:else>{{addressee.region[0]}}{{addressee.region[1]}}{{addressee.region[2]}}{{addressee.address}}</text>
+      </navigator>
+    </view>
+    <view class="right"></view>
+  </view>
+</view>
+
+<view class="group mt">
+	<view class="group_item border_bottom">
+    <view class="left">物品类型</view>
+    <view class="center text_right">
+      <picker bindchange="typeChange" value="{{typeIndex}}" range="{{type}}">
+	    <view class="picker">
+	      <text wx:if="{{isSelectType}}">{{type[typeIndex]}}</text>
+	      <text wx:else class="placeholder">请选择物品类型</text>
+	    </view>
+	  </picker>
+    </view>
+    <view class="right"></view>
+  </view>
+
+  <view class="group_item border_bottom">
+    <view class="left">期望到达时间</view>
+    <view class="center text_right">
+      <picker mode="multiSelector" bindchange="endTimeSureChange" bindcolumnchange="endTimeChange" value="{{endTimeIndex}}" range="{{endTime}}" range-key="{{'name'}}">
+        <view class="picker">
+          <text wx:if="{{!noEndTime}}">{{endTime[0][endTimeIndex[0]].name}}，{{endTime[1][endTimeIndex[1]].name}}</text>
+          <text wx:else class="placeholder">请选择到达时间</text>
+        </view>
+      </picker>
+    </view>
+    <view class="right"></view>
+  </view>
+</view>
+
+<view class="group mt">
+  <view class="group_item">
+    <view class="center">
+      <input  bindinput="remarkChange" placeholder="留言" value="{{remark}}" />
+    </view>
+  </view>
+</view>
+
+<!-- <view class="group mt">
+  <view class="group_item">
+    <view class="left">出价</view>
+    <view class="center text_right">
+      <text class="price_icon">￥</text><input type="digit"  bindinput="priceChange" placeholder="请输入报价金额"/>
+    </view>
+  </view>
+</view> -->
+<view class="mt group">
+  <view class="group_item border_bottom">
+    <view class="group_item_key">报价</view>
+    <view class="group_item_value price_text">￥{{price}}</view>
+  </view>
+</view>
+
+<view class="deal mt">
+  <view class="deal_checked">
+    <checkbox-group bindchange="checkboxChange">
+      <label class="checkbox" wx:for="{{readDeal}}" wx:key>
+        <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </checkbox-group>
+    <text>我已阅读并同意</text><text class="waybill" bindtap="openAgreement">《快件运单契约条款》</text>
+  </view>
+</view>
+
+<view class="button_group">
+  <button type="primary" disabled="{{disabled}}" bindtap="submit">确认并提交</button>
+  <navigator open-type="navigateBack">
+    <button>取消</button>
+  </navigator>
+</view>

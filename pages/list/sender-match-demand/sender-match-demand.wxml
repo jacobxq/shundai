@@ -1,0 +1,61 @@
+<view class="group mt">
+	<view class="group_item border_bottom">
+		<view class="group_item_key">差旅者</view>
+		<view class="group_item_value">
+			<image src="../../../images/unverified.png" wx:if="{{!realNameAuth}}"></image>
+			<image src="../../../images/verified.png" wx:else></image>
+			<text>{{name}}</text>
+		</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">出发地</view>
+		<view class="group_item_value">{{startCity}}</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">出发时间</view>
+		<view class="group_item_value">{{startTime}}</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">目的地</view>
+		<view class="group_item_value">{{endCity}}</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">到达时间</view>
+		<view class="group_item_value">{{endTime}}</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">手机</view>
+		<view class="group_item_value">{{phone}}</view>
+	</view>
+	<view class="group_item border_bottom" bindtap="previewImage">
+		<view class="group_item_key">交通凭证</view>
+		<view class="group_item_value">已上传</view>
+	</view>
+	<view class="group_item border_bottom">
+		<view class="group_item_key">差旅者备注</view>
+		<view class="group_item_value">{{remark}}</view>
+	</view>
+</view>
+
+<view class="mt group">
+	<view class="group_item border_bottom">
+		<view class="group_item_key">报价</view>
+		<view class="group_item_value price_text">￥{{price}}</view>
+	</view>
+</view>
+
+<view class="deal mt">
+  <view class="deal_checked">
+    <checkbox-group bindchange="checkboxChange">
+      <label class="checkbox">
+        <checkbox checked="{{true}}"/>
+      </label>
+    </checkbox-group>
+    <text>我已阅读并同意</text><text class="waybill" bindtap="openAgreement">《快件运单契约条款》</text>
+  </view>
+</view>
+
+<view class="button_group mt">
+  <button type="primary" bindtap="iWantSend">我要托付</button>
+  <button bindtap="makePhone">联系对方</button>
+</view>

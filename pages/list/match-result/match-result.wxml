@@ -1,0 +1,28 @@
+<view>
+  <view class="result">
+    <icon type="success" size="80"/>
+    <text>匹配成功</text>
+    <view class="text">
+      <block wx:if="{{type == 'bring'}}">
+          <view>请与寄件人确认交接物品时间地点</view>
+          <view>交接物品后请支付订单费用</view>
+          <view>平台对此次交易进行担保</view>
+          <view>物品签收后才会将订单费用结算给寄件人</view>
+          <view>当超时无人响应时，需求将自动取消</view>
+      </block>
+    	<block wx:else>
+        <view>请与差旅者确认交接物品时间地点</view>
+        <view>交接物品后请支付订单费用</view>
+        <view>平台对此次交易进行担保</view>
+        <view>物品签收后才会将订单费用结算给差旅者</view>
+        <view>当超时无人响应时，需求将自动取消</view>
+      </block>
+    </view>
+    <view class="button">
+  		<button bindtap="cancleOrder" bindtap="chatOrder">查看订单</button>
+    </view>
+    <view class="footer">
+    	客服电话：<text bindtap="makePhone">{{phoneNumber}}</text> | <text bindtap="openAgreement">服务协议</text>
+    </view>
+  </view>
+</view>

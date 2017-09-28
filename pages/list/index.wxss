@@ -1,0 +1,42 @@
+/* pages/list/index.wxss */
+.green {
+  color: #1AAD19;
+}
+.flex_box {
+  display: flex;
+  background-color: #fff;
+  border-top: 2rpx solid #EFEFF4;
+  border-bottom: 2rpx solid #EFEFF4;
+  margin: 20rpx 0;
+  padding: 20rpx 0;
+}
+.flex_item {
+  flex: 1;
+  text-align: center;
+}
+
+.flex_item .top {
+  color: #999999;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+}
+
+.refresh-block {
+  padding: 30rpx;
+  text-align: center;
+}
+.refresh-block image {
+  height: 50rpx;
+  width: 50rpx;
+  animation: spin2 6s infinite linear;
+}
+
+@keyframes spin2 {
+  0% {
+    transform: rotate(0)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}

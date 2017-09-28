@@ -1,0 +1,20 @@
+.price {
+	padding: 20rpx 20rpx;
+	background-color: #fff;
+}
+
+.price .price_name {
+	font-size: 26rpx;
+	color: #000;
+	margin-bottom: 10rpx;
+}
+
+.price .input_box {
+	display: flex;
+}
+
+.text {
+	padding-left: 20rpx;
+	font-size: 28rpx;
+	color: #888;
+}

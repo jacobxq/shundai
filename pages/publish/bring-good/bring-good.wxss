@@ -1,0 +1,4 @@
+.text_right {
+	text-align:right;
+	padding-right:20rpx;
+}

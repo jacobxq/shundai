@@ -1,0 +1,13 @@
+.flex_right {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.text_right {
+	text-align:right;
+	padding-right:20rpx;
+}
+
+.group_item .left {
+	color: #b2b2b2;
+}
