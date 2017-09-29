@@ -52,8 +52,27 @@ Page({
             },
 
             fail(error) {
-                app.showModel('登录失败', '你已经拒绝了授权顺带速运登录，请删掉顺带速运小程序，再搜索输入顺带速运，进入小程序重新授权');
-                console.log('登录失败', error);
+                // app.showModel('登录失败', '你已经拒绝了授权顺带速运登录，请删掉顺带速运小程序，再搜索输入顺带速运，进入小程序重新授权');
+                // console.log('登录失败', error);
+                wx.showModal({
+                    title: '温馨提示',
+                    content: '若不授权微信登录，则无法正常使用顺带速运的功能；点击授权可重新使用；如点击不授权，后期使用需要在小程序设置界面（右上角 - 关于顺带速运官方服务平台 - 右上角 - 设置）中开启对该小程序的授权。',
+                    cancelText: '不授权',
+                    confirmText: '授权',
+                    showCancel: true,
+                    success: function (res) {
+                        if (res.confirm) {
+                            wx.openSetting({
+                              success: (res) => {
+                                that.login()
+                              }
+                            })
+                        } else if (res.cancel) {
+                            console.log('用户不授权')
+                            wx.hideToast();
+                        }
+                    }
+                })
             }
         });
     },
