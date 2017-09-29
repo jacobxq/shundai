@@ -4,7 +4,7 @@
     <view class="center">
       <navigator url="../add-address/add-address?type=send" open-type="redirectTo">
         <text wx:if="{{!send}}" class="placeholder">请填写寄件人信息</text>
-        <text wx:else>{{send.region[0]}}{{send.region[1]}}{{send.region[2]}}{{send.address}}</text>
+        <text wx:else>{{send.region[0]}}{{send.region[1]}}{{send.region[2]}}{{send.location}}</text>
       </navigator>
     </view>
     <view class="right"></view>
@@ -13,9 +13,9 @@
   <view class="group_item">
     <view class="left">收</view>
     <view class="center">
-      <navigator url="../add-address/add-address?type=addressee" open-type="redirectTo">
-        <text wx:if="{{!addressee}}" class="placeholder">请填写收件人信息</text>
-        <text wx:else>{{addressee.region[0]}}{{addressee.region[1]}}{{addressee.region[2]}}{{addressee.address}}</text>
+      <navigator url="../add-address/add-address?type=receiver" open-type="redirectTo">
+        <text wx:if="{{!receiver}}" class="placeholder">请填写收件人信息</text>
+        <text wx:else>{{receiver.region[0]}}{{receiver.region[1]}}{{receiver.region[2]}}{{receiver.location}}</text>
       </navigator>
     </view>
     <view class="right"></view>

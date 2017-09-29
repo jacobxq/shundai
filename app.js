@@ -18,7 +18,7 @@ App({
             duration: 10000
         });
     },
-    showSuccess(test) {
+    showSuccess(text) {
         wx.showToast({
             title: text,
             icon: 'success'

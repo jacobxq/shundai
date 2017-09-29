@@ -12,7 +12,7 @@ Page({
             mobile: '',
             address: ''
         },
-        recipients: {
+        receiver: {
             name: '',
             mobile: '',
             address: ''
@@ -32,17 +32,17 @@ Page({
                     var data = res.data.returnObject
                     this.setData({
                         code: data.code,
-                        type: data.goodsType,
+                        type: data.demandType,
                         wishArriveTime: data.arrivalTime,
                         sender: {
                             name: data.sender.name,
                             mobile: data.sender.mobile,
                             address: data.sender.province + data.sender.city + data.sender.area + data.sender.address
                         },
-                        recipients: {
-                            name: data.recipients.name,
-                            mobile: data.recipients.mobile,
-                            address: data.recipients.province + data.recipients.city + data.recipients.area + data.recipients.address
+                        receiver: {
+                            name: data.receiver.name,
+                            mobile: data.receiver.mobile,
+                            address: data.receiver.province + data.receiver.city + data.receiver.area + data.receiver.address
                         },
                         price: data.price,
                         remark: data.remark

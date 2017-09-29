@@ -4,7 +4,7 @@ var address = {
         name: '',
         region: [],
         phone: '',
-        address: '',
+        location: '',
         type: ''
     },
     onLoad: function (options) {
@@ -17,7 +17,7 @@ var address = {
                     name: res.data.name,
                     region: res.data.region,
                     phone: res.data.phone,
-                    address: res.data.address
+                    location: res.data.location
                 })
             }
         })
@@ -46,7 +46,7 @@ var address = {
     },
     addressChange: function (e) {
         this.setData({
-            address: e.detail.value
+            location: e.detail.value
         })
     },
     verify: function (data) {
@@ -62,7 +62,7 @@ var address = {
             modal('请选择地区')
             return false
         }
-        if (!data.address) {
+        if (!data.location) {
             modal('请输入具体到街道、门牌号等信息')
             return false
         }

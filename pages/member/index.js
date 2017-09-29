@@ -17,6 +17,10 @@ Page({
         wx.setNavigationBarTitle({
             title: '个人中心'
         })
+        console.log(wx.getStorageSync('userInfo'))
+        this.setData({
+            userInfo: wx.getStorageSync('userInfo')
+        })
     },
     /**
      * 生命周期函数--监听页面显示
@@ -48,7 +52,7 @@ Page({
             },
 
             fail(error) {
-                app.showModel('登录失败', error);
+                app.showModel('登录失败', '你已经拒绝了授权顺带速运登录，请删掉顺带速运小程序，再搜索输入顺带速运，进入小程序重新授权');
                 console.log('登录失败', error);
             }
         });
@@ -61,7 +65,7 @@ Page({
                 wx.removeStorageSync('userInfo');
                 // 清除保存在 storage 的会话信息
                 qcloud.clearSession();
-                app.showSuccess('会话已清除');
+                app.showSuccess('退出登录');
                 this.setData({
                     userInfo: null
                 })

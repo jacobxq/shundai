@@ -60,7 +60,7 @@ Page({
             this.setData({
                 getingRealName: true
             })
-            this.realNameAuth()
+            this.login()
             app.showLoading()
         }
     },
@@ -71,7 +71,6 @@ Page({
             // 要请求的地址
             url: globalData.baseURL + 'xcx/get-config',
             // 请求之前是否登陆，如果该项指定为 true，会在请求之前进行登录
-            login: true,
             success: res => {
                 if (res.data.result) {
                     wx.setStorageSync('phoneNumber', res.data.returnObject.tel)
@@ -103,7 +102,7 @@ Page({
             login: true,
             success: res => {
                 if (res.data.result) {
-                    wx.setStorageSync('realNameAuth', res.data.returnObject.realNameAuth)
+                    wx.setStorageSync('realNameAuth', res.data.result)
                     this.setData({
                         getingRealName: false
                     })
@@ -124,11 +123,30 @@ Page({
             }
         });
     },
+    login() {
+        var that = this;
+        qcloud.login({
+            success(result) {
+                console.log(result)
+                wx.hideToast();
+                wx.setStorageSync('userInfo', result);
+                that.setData({
+                    userInfo: result
+                })
+                that.realNameAuth()
+            },
+
+            fail(error) {
+                app.showModel('登录失败', '你已经拒绝了授权顺带速运登录，请删掉顺带速运小程序，再搜索输入顺带速运，进入小程序重新授权');
+                console.log('登录失败', error);
+            }
+        });
+    },
     // 我要托付
     iWandtSend() {
         if (wx.getStorageSync('userInfo')) {
             wx.removeStorageSync('send')
-            wx.removeStorageSync('addressee')
+            wx.removeStorageSync('receiver')
             wx.navigateTo({ url: 'send-good/send-good' })
         } else {
             modal('请先登录再操作', (res) => {

@@ -89,11 +89,11 @@ Page({
             },
             login: true,
             success: function (res) {
+                wx.hideLoading()
                 var newList = that.data.list
                 res.data.resultList.forEach(function (item, index) {
                     newList.push(item)
                 })
-                wx.hideLoading()
                 that.setData({
                     loading: false,
                     showLoading: false,

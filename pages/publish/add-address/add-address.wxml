@@ -29,7 +29,7 @@
   <view class="group_item">
     <view class="left">地址</view>
       <view class="center">
-        <input bindinput="addressChange" value="{{address}}" placeholder="具体到街道、门牌号等信息"/>
+        <input bindinput="addressChange" value="{{location}}" placeholder="具体到街道、门牌号等信息"/>
     </view>
   </view>
 </view>

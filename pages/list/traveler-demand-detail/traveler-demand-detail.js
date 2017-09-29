@@ -27,7 +27,7 @@ Page({
                     var data = res.data.returnObject
                     this.setData({
                         code: data.code,
-                        startCity: data.departure.city + data.departure.area,
+                        startCity: data.arrival.city + data.arrival.area,
                         startTime: data.departureTime,
                         endCity: data.arrival.city + data.arrival.area,
                         endTime: data.arrivalTime,

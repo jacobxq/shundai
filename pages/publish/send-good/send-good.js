@@ -8,7 +8,7 @@ const qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index');
 var send = {
     data: {
         send: '',
-        addressee: '',
+        receiver: '',
         type: ['文件', '证件', '小件'],
         typeIndex: 0,
         isSelectType: false,
@@ -26,6 +26,7 @@ var send = {
     onLoad: function (options) {
         if (options.type == 'new') return
         if (options.code) {
+            app.showLoading();
             qcloud.request({
                 url: globalData.baseURL + 'xcx/send/' + options.code,
                 login: true,
@@ -36,22 +37,22 @@ var send = {
                             name: data.sender.name,
                             region: [data.sender.province, data.sender.city, data.sender.area],
                             phone: data.sender.mobile,
-                            address: data.sender.address,
+                            location: data.sender.location,
                             type: 'send'
                         }
-                        var addressee = {
-                            name: data.recipients.name,
-                            region: [data.recipients.province, data.recipients.city, data.recipients.area],
-                            phone: data.recipients.mobile,
-                            address: data.recipients.address,
-                            type: 'addressee'
+                        var receiver = {
+                            name: data.receiver.name,
+                            region: [data.receiver.province, data.receiver.city, data.receiver.area],
+                            phone: data.receiver.mobile,
+                            location: data.receiver.location,
+                            type: 'receiver'
                         }
                         this.setData({
                             code: data.code,
                             typeIndex: data.fIndex.typeIndex,
                             endTimeIndex: data.fIndex.endTimeIndex,
                             send: send,
-                            addressee: addressee,
+                            receiver: receiver,
                             noEndTime: false,
                             isSelectType: true,
                             price: data.price,
@@ -59,7 +60,8 @@ var send = {
                             code: data.code
                         })
                         wx.setStorageSync('send', send)
-                        wx.setStorageSync('addressee', addressee)
+                        wx.setStorageSync('receiver', receiver)
+                        wx.hideLoading()
                     }
                 },
                 fail(error) {
@@ -82,10 +84,10 @@ var send = {
             }
         })
         wx.getStorage({
-            key: 'addressee',
+            key: 'receiver',
             success: function (res) {
                 that.setData({
-                    addressee: res.data,
+                    receiver: res.data,
                 })
             }
         })
@@ -190,7 +192,7 @@ var send = {
             modal('请填写寄件人信息')
             return false
         }
-        if (!data.addressee) {
+        if (!data.receiver) {
             modal('请填写收件人信息')
             return false
         }
@@ -217,15 +219,15 @@ var send = {
                 province: this.data.send.region[0],
                 city: this.data.send.region[1],
                 area: this.data.send.region[2],
-                address: this.data.send.address
+                location: this.data.send.location
             },
             receiver: {
-                name: this.data.addressee.name,
-                mobile: this.data.addressee.phone,
-                province: this.data.addressee.region[0],
-                city: this.data.addressee.region[1],
-                area: this.data.addressee.region[2],
-                address: this.data.addressee.address
+                name: this.data.receiver.name,
+                mobile: this.data.receiver.phone,
+                province: this.data.receiver.region[0],
+                city: this.data.receiver.region[1],
+                area: this.data.receiver.region[2],
+                location: this.data.receiver.location
             },
             goodsType: this.data.image,
             departureTime: date.y + '-' + date.m + '-' + date.d + ' ' + date.h + ':' + date.min,

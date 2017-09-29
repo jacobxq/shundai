@@ -30,6 +30,7 @@ var bring = {
             title: '我要顺带'
         })
         if (options.code) {
+            app.showLoading();
             qcloud.request({
                 url: globalData.baseURL + 'xcx/carry/' + options.code,
                 login: true,
@@ -49,6 +50,7 @@ var bring = {
                             price: data.price,
                             code: data.code
                         })
+                        wx.hideLoading()
                     }
                 },
                 fail(error) {
