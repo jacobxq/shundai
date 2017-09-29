@@ -32,17 +32,17 @@ Page({
                     var data = res.data.returnObject
                     this.setData({
                         code: data.code,
-                        type: data.demandType,
+                        type: data.goodsType,
                         wishArriveTime: data.arrivalTime,
                         sender: {
                             name: data.sender.name,
                             mobile: data.sender.mobile,
-                            address: data.sender.province + data.sender.city + data.sender.area + data.sender.address
+                            address: data.sender.province + data.sender.city + data.sender.area + data.sender.location
                         },
                         receiver: {
                             name: data.receiver.name,
                             mobile: data.receiver.mobile,
-                            address: data.receiver.province + data.receiver.city + data.receiver.area + data.receiver.address
+                            address: data.receiver.province + data.receiver.city + data.receiver.area + data.receiver.location
                         },
                         price: data.price,
                         remark: data.remark
@@ -70,7 +70,7 @@ Page({
             login: true,
             success: res => {
                 if (res.data.result) {
-                    modal(res.data.returnMessage, function () {
+                    modal('删除成功', function () {
                         wx.switchTab({ url: '../../publish/index' })
                     })
                 }

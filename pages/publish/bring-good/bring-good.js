@@ -251,6 +251,7 @@ var bring = {
             mobile: this.data.phone,
             trafficVoucher: this.data.image,
             remark: this.data.remark,
+            price: this.data.price,
             code: this.data.code,
             fIndex: {
                 startTimeIndex: this.data.startTimeIndex,

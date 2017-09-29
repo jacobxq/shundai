@@ -31,6 +31,7 @@ Page({
             success: res => {
                 if (res.data.result) {
                     var data = res.data.returnObject
+                    console.log(data)
                     this.setData({
                         code: data.code,
                         type: data.goodsType,
@@ -41,9 +42,9 @@ Page({
                             address: data.sender.province + data.sender.city + data.sender.area + data.sender.address
                         },
                         recipients: {
-                            name: data.recipients.name.substr(0, 1),
-                            mobile: data.recipients.mobile,
-                            address: data.recipients.province + data.recipients.city + data.recipients.area + data.recipients.address
+                            name: data.receiver.name.substr(0, 1),
+                            mobile: data.receiver.mobile,
+                            address: data.receiver.province + data.receiver.city + data.receiver.area + data.receiver.address
                         },
                         price: data.price,
                         remark: data.remark

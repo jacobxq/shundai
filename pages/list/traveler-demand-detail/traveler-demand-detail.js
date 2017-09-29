@@ -29,7 +29,7 @@ Page({
                         code: data.code,
                         startCity: data.arrival.city + data.arrival.area,
                         startTime: data.departureTime,
-                        endCity: data.arrival.city + data.arrival.area,
+                        endCity: data.departure.city + data.departure.area,
                         endTime: data.arrivalTime,
                         phone: data.mobile,
                         image: data.trafficVoucher,
@@ -65,7 +65,7 @@ Page({
             login: true,
             success: res => {
                 if (res.data.result) {
-                    modal(res.data.returnMessage, function () {
+                    modal('删除成功', function () {
                         wx.switchTab({ url: '../../publish/index' })
                     })
                 }

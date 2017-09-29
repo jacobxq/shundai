@@ -5,7 +5,6 @@ const qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index')
 Page({
     data: {
         code: '',
-        name: wx.getStorageSync('userInfo').nickName,
         startCity: '',
         startTime: '',
         endCity: '',
@@ -14,14 +13,10 @@ Page({
         image: '',
         remark: '',
         price: '',
-        realNameAuth: false
+        carryerAuth: false,
+        carryer: ''
     },
     onLoad(options) {
-        if (wx.getStorageSync('realNameAuth')) {
-            this.setData({
-                realNameAuth: true
-            })
-        }
         this.setData({
             code: options.code || 's1'
         })
@@ -40,7 +35,9 @@ Page({
                         phone: data.mobile,
                         image: data.trafficVoucher,
                         remark: data.remark,
-                        price: data.price
+                        price: data.price,
+                        carryerAuth: data.carryerAuth,
+                        carryer: data.carryer
                     })
                 }
             },

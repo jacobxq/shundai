@@ -2,9 +2,9 @@
 	<view class="group_item border_bottom">
 		<view class="group_item_key">差旅者</view>
 		<view class="group_item_value">
-			<image src="../../../images/unverified.png" wx:if="{{!realNameAuth}}"></image>
+			<image src="../../../images/unverified.png" wx:if="{{!carryerAuth}}"></image>
 			<image src="../../../images/verified.png" wx:else></image>
-			<text>{{name}}</text>
+			<text>{{carryer}}</text>
 		</view>
 	</view>
 	<view class="group_item border_bottom">
@@ -29,7 +29,8 @@
 	</view>
 	<view class="group_item border_bottom" bindtap="previewImage">
 		<view class="group_item_key">交通凭证</view>
-		<view class="group_item_value">已上传</view>
+		<view class="group_item_value" style="margin-right: 10rpx;">已上传</view>
+		<view class="right"></view>
 	</view>
 	<view class="group_item border_bottom">
 		<view class="group_item_key">差旅者备注</view>

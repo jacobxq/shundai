@@ -229,7 +229,7 @@ var send = {
                 area: this.data.receiver.region[2],
                 location: this.data.receiver.location
             },
-            goodsType: this.data.image,
+            goodsType: this.data.type[this.data.typeIndex],
             departureTime: date.y + '-' + date.m + '-' + date.d + ' ' + date.h + ':' + date.min,
             arrivalTime: this.data.endTime[0][this.data.endTimeIndex[0]].id + ' ' + this.data.endTime[1][this.data.endTimeIndex[1]].name,
             fIndex: {
