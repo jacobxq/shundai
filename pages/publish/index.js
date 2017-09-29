@@ -40,7 +40,6 @@ Page({
           data.sender = data.sender.substring(0,1);
           newSwiperData.push(data)
         })
-        console.log(newSwiperData)
         this.setData({
           swiperData: newSwiperData
         })
@@ -149,6 +148,6 @@ Page({
         }
     },
     openAgreement() {
-        wx.navigateTo({url: '../component/agreement/agreement?type=serviceAgreement'})
+        wx.navigateTo({url: '../component/agreement/agreement?type=aboutUs'})
     }
 })

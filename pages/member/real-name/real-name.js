@@ -52,6 +52,7 @@ Page({
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: res => {
+                app.showLoading('上传中...');
                 var tempFilePaths = ''
                 // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                 wx.uploadFile({
@@ -59,7 +60,7 @@ Page({
                     filePath: res.tempFilePaths[0],
                     name: 'file',
                     success: respond => {
-                        if (respond.data.result) {
+                        if (JSON.parse(respond.data).result) {
                             if (type == 'front') {
                                 tempFilePaths = 'attestationInfo.image_front'
 
@@ -67,11 +68,13 @@ Page({
                                 tempFilePaths = 'attestationInfo.image_verso'
                             }
                             this.setData({
-                                [tempFilePaths]: respond.data.returnObject.path
+                                [tempFilePaths]: globalData.baseURL + JSON.parse(respond.data).returnObject
                             })
+                            wx.hideLoading()
                         }
                     },
                     fail(error) {
+                        wx.hideLoading()
                         app.showModel('请求失败', error);
                         console.log('request fail', error);
                     },
@@ -114,9 +117,9 @@ Page({
             login: true,
             success: res => {
                 if (res.data.result) {
-                    this.setData({
-                        vCode: res.data.returnObject.smsCode
-                    })
+                    // this.setData({
+                    //     vCode: res.data.returnObject.smsCode
+                    // })
                 }
             },
             fail(error) {
@@ -150,8 +153,8 @@ Page({
             return false
         }
         if (!code || code != this.data.vCode) {
-            modal('请输入正确短信验证码')
-            return false
+            // modal('请输入正确短信验证码')
+            // return false
         }
         return true
     },

@@ -93,7 +93,7 @@
         <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
       </label>
     </checkbox-group>
-    <text>我已阅读并同意</text><text class="waybill" bindtap="openAgreement">《顺带速运服务协议》</text>
+    <text>我已阅读并同意</text><text class="waybill" bindtap="openAgreement">《用户服务协议》</text>
   </view>
 </view>
 

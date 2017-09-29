@@ -51,7 +51,7 @@
         <checkbox checked="{{true}}"/>
       </label>
     </checkbox-group>
-    <text>我已阅读并同意</text><text class="waybill" bindtap="openAgreement">《快件运单契约条款》</text>
+    <text>我已阅读并同意</text><text class="waybill" bindtap="openAgreement">《用户服务协议》</text>
   </view>
 </view>
 

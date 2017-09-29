@@ -153,19 +153,22 @@ var bring = {
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: res => {
+                app.showLoading('上传中...');
                 // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                 wx.uploadFile({
                     url: globalData.baseURL + 'xcx/upload',
                     filePath: res.tempFilePaths[0],
                     name: 'file',
                     success: respond => {
-                        if (respond.data.result) {
+                        if (JSON.parse(respond.data).result) {
                             this.setData({
-                                image: respond.data.returnObject.path
+                                image: globalData.baseURL + JSON.parse(respond.data).returnObject
                             })
                         }
+                        wx.hideLoading()
                     },
                     fail(error) {
+                        wx.hideLoading()
                         app.showModel('请求失败', error);
                         console.log('request fail', error);
                     },

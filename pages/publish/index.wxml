@@ -14,5 +14,5 @@
   </block>
 </swiper>
 <view class="info">
-  客服电话：<text bindtap="makePhone">{{phoneNumber}}</text> | <text bindtap="openAgreement">服务协议</text>
+  客服电话：<text bindtap="makePhone">{{phoneNumber}}</text> | <text bindtap="openAgreement">关于我们</text>
 </view>

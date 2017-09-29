@@ -15,6 +15,6 @@ Page({
         })
     },
     openAgreement() {
-        wx.navigateTo({url: '../../component/agreement/agreement?type=serviceAgreement'})
+        wx.navigateTo({url: '../../component/agreement/agreement?type=aboutUs'})
     }
 })

@@ -1,9 +1,26 @@
 .content {
 	padding: 40rpx 20rpx;
+	background-color: #fff;
 }
 
-.title {
+.content .title {
 	text-align: center;
-	margin: 20rpx 0;
-	font-size: 50rpx;
+	margin-bottom: 20rpx;
+	font-size: 40rpx;
 }
+
+.content .second-title {
+	font-size: 35rpx;
+}
+
+
+.content view:not(.title) {
+	margin-bottom: 10rpx;
+	font-size: 30rpx;
+	text-indent: 40rpx;
+}
+
+.orange {
+	color: orange;
+}
+
