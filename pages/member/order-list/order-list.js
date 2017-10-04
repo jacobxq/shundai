@@ -10,7 +10,14 @@ Page({
         pageNo: 1,
         list: [],
         loading: false,
-        showLoading: false
+        showLoading: false,
+        orderStatusMap: {
+            "NEW": '已接单',
+            "PICKUP": '已揽件',
+            "PAID": '已支付',
+            "SIGNED": '已签收',
+            "CANCELED": '已取消'
+        }
     },
 
     /**
@@ -51,6 +58,7 @@ Page({
             success: function (res) {
                 var newList = that.data.list
                 res.data.resultList.forEach(function (item, index) {
+                    item.arrivalTime = item.arrivalTime.slice(0, 11);
                     newList.push(item)
                 })
                 wx.hideLoading()

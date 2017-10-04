@@ -5,7 +5,14 @@ const qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index')
 Page({
 	data: {
 		code: '',
-		data: {}
+		data: {},
+        orderStatusMap: {
+            "NEW": '已接单',
+            "PICKUP": '已揽件',
+            "PAID": '已支付',
+            "SIGNED": '已签收',
+            "CANCELED": '已取消'
+        }
 	},
 	onLoad(options) {
 		wx.setNavigationBarTitle({
@@ -18,7 +25,7 @@ Page({
 	},
 	getOrderData() {
         qcloud.request({
-            url: globalData.baseURL + 'xcx/order/' + this.data.code,
+            url: globalData.baseURL + 'xcx/order/carry/' + this.data.code,
             login: true,
             success: res => {
                 if (res.data.result) {
@@ -45,8 +52,7 @@ Page({
     },
     operateOrder(orderStatus, cb) {
         qcloud.request({
-            // url: globalData.baseURL + 'xcx/order/operate/' + this.data.code,
-            url: globalData.baseURL + 'xcx/order/operate/s1',
+            url: globalData.baseURL + 'xcx/order/operate/' + this.data.code,
             method: 'POST',
             data: {
                 opType: orderStatus

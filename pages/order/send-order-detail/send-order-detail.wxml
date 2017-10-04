@@ -1,11 +1,11 @@
 <view class="group mt">
 	<view class="group_item border_bottom">
 		<view class="group_item_key">订单号</view>
-		<view class="group_item_value">{{data.code}}</view>
+		<view class="group_item_value">{{data.orderCode}}</view>
 	</view>
 	<view class="group_item border_bottom">
 		<view class="group_item_key">订单状态</view>
-		<view class="group_item_value"><text class="data">{{data.updateTime}} </text><text class="status">{{data.orderStatusCn}}</text></view>
+		<view class="group_item_value"><text class="data">{{data.updateTime}} </text><text class="status">{{orderStatusMap[data.orderStatus]}}</text></view>
 	</view>
 </view>
 
@@ -27,20 +27,20 @@
 <view class="person_message_info mt">
 	<view class="person_message_info_title">寄件人信息</view>
 	<view class="person_message_info_detail">
-		<view class="name_phone">{{data.sender.name}} <text>{{data.sender.mobile}}</text></view>
-		<view class="address">{{data.sender.province}}{{data.sender.city}}{{data.sender.area}}{{data.sender.address}}</view>
+		<view class="name_phone">{{data.senderAddr.name}} <text>{{data.senderAddr.mobile}}</text></view>
+		<view class="address">{{data.senderAddr.province}}{{data.senderAddr.city}}{{data.senderAddr.area}}{{data.senderAddr.location}}</view>
 	</view>
 </view>
 
 <view class="person_message_info mt">
 	<view class="person_message_info_title">收件人信息</view>
 	<view class="person_message_info_detail">
-	<view class="name_phone">{{data.recipients.name}} <text>{{data.recipients.mobile}}</text></view>
-	<view class="address">{{data.recipients.province}}{{data.recipients.city}}{{data.recipients.area}}{{data.recipients.address}}</view>
+	<view class="name_phone">{{data.receiverAddr.name}} <text>{{data.receiverAddr.mobile}}</text></view>
+	<view class="address">{{data.receiverAddr.province}}{{data.receiverAddr.city}}{{data.receiverAddr.area}}{{data.receiverAddr.location}}</view>
 	</view>
 </view>
 
-<view class="group mt" wx:if="{{data.orderRole == 'SEND'}}">
+<view class="group mt" wx:if="{{data.orderRole == 'sender'}}">
 	<view class="group_item border_bottom">
 		<view class="group_item_key">差旅者</view>
 		<view class="group_item_value">{{data.carryerNickName}}</view>
@@ -57,7 +57,7 @@
 	</view>
 </view>
 
-<view class="button_group mt" wx:if="{{data.orderRole == 'SEND'}}">
+<view class="button_group mt" wx:if="{{data.orderRole == 'sender'}}">
 	<block wx:if="{{data.orderStatus == 'NEW'}}">
 		<button bindtap="cancelOrder">取消</button>
 	</block>

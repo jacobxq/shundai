@@ -4,8 +4,8 @@
 	  	<view class="icon icon_send" wx:if="{{item.orderType == '寄'}}">{{item.orderType}}</view>
         <view class="icon icon_bring" wx:else>{{item.orderType}}</view>
 	    <view class="flex_item city">{{item.departure}}-{{item.arrival}}</view>
-	    <view class="flex_item date">{{item.arrivalTime}}</view>
-	    <view class="flex_item status">
+	    <view class="flex_item date">{{item.arrivalTime}}{{orderStatusMap[item.orderStatus]}}</view>
+	    <view class="status">
 		    <text>{{item.orderStatus}}</text>
 		    <view class="arrow arrows"></view>
 	    </view>

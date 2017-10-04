@@ -14,7 +14,11 @@
 	transform:rotate(45deg);
 }
 
-.list_box .list_item .status {
+.list_box .list_item .city {
+  text-align: left;
+}
+.list_box .list_item .status,
+.list_box .list_item .date {
 	text-align: right;
 }
 
@@ -36,4 +40,10 @@
   100% {
     transform: rotate(360deg)
   }
+}
+
+.list_item .icon {
+  padding: 0 6rpx;
+  font-size: 30rpx;
+  margin-right: 16rpx;
 }

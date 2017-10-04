@@ -20,6 +20,7 @@ Page({
         this.setData({
             code: options.code || 's1'
         })
+        app.showLoading();
         qcloud.request({
             url: globalData.baseURL + 'xcx/carry/' + this.data.code,
             login: true,
@@ -39,6 +40,7 @@ Page({
                         carryerAuth: data.carryerAuth,
                         carryer: data.carryer
                     })
+                    wx.hideToast();
                 }
             },
             fail(error) {
