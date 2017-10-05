@@ -81,8 +81,8 @@ Page({
             url: globalData.baseURL + 'xcx/demand/list',
             method: 'POST',
             data: {
-                departure: this.data.startCity[1],
-                arrive: this.data.endCity[1],
+                departureCity: this.data.startCity[1],
+                arrivalCity: this.data.endCity[1],
                 demandType: this.data.typeCode[this.data.typeIndex],
                 pageNo: this.data.pageNo,
                 pageSize: 10
