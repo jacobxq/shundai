@@ -40,3 +40,8 @@
     transform: rotate(360deg)
   }
 }
+
+.no_list_data {
+  text-align: center;
+  padding: 20rpx;
+}

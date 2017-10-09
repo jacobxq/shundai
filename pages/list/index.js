@@ -10,9 +10,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-        startCity: ['广东省', '广州市', '天河区'],
-        endCity: ['广东省', '广州市', '天河区'],
+        startCity: [],
+        endCity: [],
         type: ['全部', '顺带', '寄件'],
+        selectedStartCity: false,
+        selectedEndCity: false,
         typeCode: ['', 'CARRY', 'SEND'],
         typeIndex: 0,
         pageNo: 1,
@@ -35,7 +37,7 @@ Page({
             this.getDataList()
         } else {
             modal('请先登录', () => {
-                wx.switchTab({url: '../member/index'})
+                wx.switchTab({ url: '../member/index' })
             }, false)
         }
     },
@@ -54,7 +56,8 @@ Page({
         this.setData({
             list: [],
             pageNo: 1,
-            startCity: e.detail.value
+            startCity: e.detail.value,
+            selectedStartCity: true
         })
         this.getDataList()
     },
@@ -62,7 +65,8 @@ Page({
         this.setData({
             list: [],
             pageNo: 1,
-            endCity: e.detail.value
+            endCity: e.detail.value,
+            selectedEndCity: true
         })
         this.getDataList()
     },
@@ -82,8 +86,8 @@ Page({
             method: 'POST',
             data: {
                 pd: {
-                    departureCity: this.data.startCity[1],
-                    arrivalCity: this.data.endCity[1],
+                    departureCity: !this.data.selectedStartCity ? '' :this.data.startCity[1],
+                    arrivalCity: !this.data.selectedEndCity ? '' : this.data.endCity[1],
                     demandType: this.data.typeCode[this.data.typeIndex],
                 },
                 currentPage: this.data.pageNo,
@@ -112,27 +116,26 @@ Page({
             }
         })
     },
-    gotoMatch(e){
+    gotoMatch(e) {
         var type = e.currentTarget.dataset.type
         var isSelf = e.currentTarget.dataset.self
         var id = e.currentTarget.id
         console.log(type, isSelf, id)
         if (type == '寄') {
             if (!isSelf) {
-                wx.navigateTo({url:'./traveler-match-demand/traveler-match-demand?code='+ id})
+                wx.navigateTo({ url: './traveler-match-demand/traveler-match-demand?code=' + id })
             } else {
-                wx.navigateTo({url:'./sender-demand-detail/sender-demand-detail?code='+ id})
+                wx.navigateTo({ url: './sender-demand-detail/sender-demand-detail?code=' + id })
             }
         } else {
             if (!isSelf) {
-                wx.navigateTo({url:'./sender-match-demand/sender-match-demand?code='+ id})
+                wx.navigateTo({ url: './sender-match-demand/sender-match-demand?code=' + id })
             } else {
-                wx.navigateTo({url:'./traveler-demand-detail/traveler-demand-detail?code='+ id})
+                wx.navigateTo({ url: './traveler-demand-detail/traveler-demand-detail?code=' + id })
             }
         }
     },
 
-    
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -147,7 +150,7 @@ Page({
     onShow: function () {
         if (!wx.getStorageSync('userInfo')) {
             modal('请先登录', () => {
-                wx.switchTab({url: '../member/index'})
+                wx.switchTab({ url: '../member/index' })
             })
         } else if (!hadGetList) {
             this.getDataList()
@@ -175,7 +178,7 @@ Page({
 
     },
 
-    
+
 
     /**
      * 用户点击右上角分享
