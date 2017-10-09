@@ -9,7 +9,7 @@
   autoplay interval='2000' vertical circular>
   <block wx:for="{{swiperData}}" wx:key="{{item}}">
     <swiper-item>
-      <view>{{item.recipients}}**从{{item.startCity}}到{{item.arrivalCity}}帮{{item.sender}}**顺带了{{item.goodsType}}</view>
+      <view>{{item}}</view>
     </swiper-item>
   </block>
 </swiper>

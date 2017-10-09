@@ -81,11 +81,13 @@ Page({
             url: globalData.baseURL + 'xcx/demand/list',
             method: 'POST',
             data: {
-                departureCity: this.data.startCity[1],
-                arrivalCity: this.data.endCity[1],
-                demandType: this.data.typeCode[this.data.typeIndex],
-                pageNo: this.data.pageNo,
-                pageSize: 10
+                pd: {
+                    departureCity: this.data.startCity[1],
+                    arrivalCity: this.data.endCity[1],
+                    demandType: this.data.typeCode[this.data.typeIndex],
+                },
+                currentPage: this.data.pageNo,
+                showCount: 10
             },
             login: true,
             success: function (res) {

@@ -12,37 +12,12 @@ Page({
         phoneNumber: wx.getStorageSync('phoneNumber'),
         getingNumber: false,
         getingRealName: false,
-        swiperData: [
-          {
-            recipients: '黄xx',
-            sender: '林xx',
-            goodsType: '电脑',
-            startCity: '广州',
-            arrivalCity: '北京'
-          },
-          {
-            recipients: '林xx',
-            sender: '黄xx',
-            goodsType: '花',
-            startCity: '冰岛',
-            arrivalCity: 'USA'
-          }
-        ]
+        swiperData: []
     },
     makePhone: function () {
         app.makePhone()
     },
     onLoad: function () {
-        var newSwiperData = [];
-        this.data.swiperData.forEach(function (item, index) {
-          var data = item;
-          data.recipients = data.recipients.substring(0,1);
-          data.sender = data.sender.substring(0,1);
-          newSwiperData.push(data)
-        })
-        this.setData({
-          swiperData: newSwiperData
-        })
         // 判断是否已经获取电话号码
         if (wx.getStorageSync('phoneNumber')) {
             this.setData({
@@ -63,6 +38,7 @@ Page({
             this.login()
             app.showLoading()
         }
+        this.getRollDate()
     },
     // 获取手机号
     getPhoneNum(cb) {
@@ -153,6 +129,32 @@ Page({
                         }
                     }
                 })
+            }
+        });
+    },
+    // 获取轮播数据
+    getRollDate() {
+        qcloud.request({
+            // 要请求的地址
+            url: globalData.baseURL + 'xcx/order/roll-msg',
+            // 请求之前是否登陆，如果该项指定为 true，会在请求之前进行登录
+            login: true,
+            success: res => {
+                if (res.data.result) {
+                    this.setData({
+                      swiperData: res.data.returnObject
+                    })
+                }
+            },
+            fail(error) {
+                app.showModel('请求失败', error);
+                console.log('request fail', error);
+            },
+            complete: () => {
+                if (!this.getingNumber && !this.getingRealName) {
+                    wx.hideLoading()
+                }
+                console.log('request complete');
             }
         });
     },

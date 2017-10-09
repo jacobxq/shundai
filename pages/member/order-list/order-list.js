@@ -51,8 +51,8 @@ Page({
             url: globalData.baseURL + 'xcx/order/list',
             method: 'POST',
             data: {
-                pageNo: this.data.pageNo,
-                pageSize: 10
+                currentPage: this.data.pageNo,
+                showCount: 10
             },
             login: true,
             success: function (res) {
