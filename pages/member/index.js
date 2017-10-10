@@ -28,9 +28,35 @@ Page({
     onShow: function () {
         if (wx.getStorageSync('realNameAuth')) {
             this.setData({
-                realNameAuth: true
+                realNameAuth: wx.getStorageSync('realNameAuth')
             })
         }
+        this.realNameAuth();
+    },
+
+    // 获取实名认证
+    realNameAuth() {
+        qcloud.request({
+            // 要请求的地址
+            url: app.globalData.baseURL + 'xcx/member/center',
+            // 请求之前是否登陆，如果该项指定为 true，会在请求之前进行登录
+            login: true,
+            success: res => {
+                if (res.data.result) {
+                    wx.setStorageSync('realNameAuth', res.data.returnObject.realNameAuth);
+                    this.setData({
+                        realNameAuth: res.data.returnObject.realNameAuth
+                    })
+                }
+            },
+            fail(error) {
+                app.showModel('请求失败', error);
+                console.log('request fail', error);
+            },
+            complete: () => {
+                console.log('request complete');
+            }
+        });
     },
 
     makePhone: function () {

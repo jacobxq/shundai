@@ -70,7 +70,7 @@ Page({
         });
     },
     // 获取实名认证
-    realNameAuth() {
+    realNameAuth(cb) {
         qcloud.request({
             // 要请求的地址
             url: globalData.baseURL + 'xcx/member/center',
@@ -78,13 +78,14 @@ Page({
             login: true,
             success: res => {
                 if (res.data.result) {
-                    wx.setStorageSync('realNameAuth', res.data.result)
+                    wx.setStorageSync('realNameAuth', res.data.returnObject.realNameAuth);
                     this.setData({
                         getingRealName: false
                     })
                     if (!this.getingNumber && !this.getingRealName) {
                         wx.hideLoading()
                     }
+                    cb && cb();
                 }
             },
             fail(error) {
@@ -173,11 +174,17 @@ Page({
     },
     // 我要顺带
     iWandtBring() {
-        if (wx.getStorageSync('userInfo') && wx.getStorageSync('realNameAuth')) {
+        if (wx.getStorageSync('userInfo') && wx.getStorageSync('realNameAuth') == 'ADUITED_SUCCESS') {
             wx.navigateTo({ url: 'bring-good/bring-good' })
         } else {
-            modal('登陆后且实名认证的用户才能发起顺带需求', (res) => {
-                wx.switchTab({ url: '../member/index' })
+            this.realNameAuth(() => {
+                if (wx.getStorageSync('realNameAuth') == 'ADUITING') {
+                    modal('实名认证审核中，审核通过后才可以发起顺带需求');
+                } else {
+                    modal('登陆后且实名认证的用户才能发起顺带需求', (res) => {
+                        wx.switchTab({ url: '../member/index' })
+                    })
+                }
             })
         }
     },

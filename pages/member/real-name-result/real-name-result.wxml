@@ -6,9 +6,9 @@
     	<view>请等待审核</view>
     </view>
     <view class="button">
-      <navigator url="../../publish/bring-good/bring-good" open-type="redirectTo">
+      <!-- <navigator url="../../publish/bring-good/bring-good" open-type="redirectTo">
         <button type="primary">我要顺带</button>
-      </navigator>
+      </navigator> -->
       <navigator url="../../publish/send-good/send-good" open-type="redirectTo">
   		  <button class="mt">我要托付</button>
       </navigator>

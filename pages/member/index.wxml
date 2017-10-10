@@ -19,7 +19,7 @@
             </view>
         </navigator>
         <block>
-          <navigator url="real-name/real-name" class="no-attestation" wx:if="{{!realNameAuth}}">
+          <navigator url="real-name/real-name" class="no-attestation" wx:if="{{realNameAuth == 'ADUITED_FAILURE'}}">
               <view class="option_item border_bottom">
                   <view class="left">
                       <text>实名认证</text>
@@ -31,6 +31,15 @@
                   </view>
               </view>
           </navigator>
+          <view class="option_item border_bottom" wx:elif="{{realNameAuth == 'ADUITING'}}">
+              <view class="left">
+                  <text>实名认证</text>
+              </view>
+              <view class="right">
+                  <icon type="success" size="15" />
+                  <text class="right_text">审核中</text>
+              </view>
+          </view>
           <view class="option_item border_bottom" wx:else>
               <view class="left">
                   <text>实名认证</text>

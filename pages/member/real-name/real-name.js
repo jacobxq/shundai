@@ -176,7 +176,7 @@ Page({
             login: true,
             success: res => {
                 if (res.data.result) {
-                    wx.setStorageSync('realNameAuth', true)
+                    wx.setStorageSync('realNameAuth', 'ADUITING')
                     wx.redirectTo({ url: '../real-name-result/real-name-result' })
                 }
             },

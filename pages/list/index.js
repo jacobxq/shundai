@@ -2,7 +2,6 @@
 const app = getApp()
 const globalData = app.globalData;
 const modal = app.modal
-var hadGetList = false
 const qcloud = require('../../vendor/qcloud-weapp-client-sdk/index')
 Page({
 
@@ -26,20 +25,8 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-        this.setData({ showLoading: true })
-        if (wx.getStorageSync('userInfo')) {
-            wx.showLoading({
-                title: '加载中...',
-                mask: true
-            })
-            hadGetList = true
-            this.getDataList()
-        } else {
-            modal('请先登录', () => {
-                wx.switchTab({ url: '../member/index' })
-            }, false)
-        }
+    onLoad: function () {
+        
     },
     /**
      * 页面上拉触底事件的处理函数
@@ -148,12 +135,20 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        if (!wx.getStorageSync('userInfo')) {
+        this.setData({ showLoading: true })
+        if (wx.getStorageSync('userInfo')) {
+            wx.showLoading({
+                title: '加载中...',
+                mask: true
+            })
+            this.setData({
+                list: []
+            })
+            this.getDataList()
+        } else {
             modal('请先登录', () => {
                 wx.switchTab({ url: '../member/index' })
-            })
-        } else if (!hadGetList) {
-            this.getDataList()
+            }, false)
         }
     },
 
