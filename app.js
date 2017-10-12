@@ -48,7 +48,6 @@ App({
         })
     },
     globalData: {
-        baseURL: 'https://www.yinyina.com/'
-        // baseURL: 'https://easy-mock.com/mock/59a58bb97b7ac306cc2fbfe9/xcx/'
+        baseURL: 'https://admin.shundai66.com/'
     }
 })

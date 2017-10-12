@@ -86,7 +86,6 @@
 </view>
 
 <view class="deal mt">
-  <view class="">签收后平台将抽取5%服务费</view>
   <view class="deal_checked">
     <checkbox-group bindchange="checkboxChange">
       <label class="checkbox" wx:for="{{readDeal}}" wx:key>
