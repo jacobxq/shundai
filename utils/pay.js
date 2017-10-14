@@ -47,25 +47,47 @@ var pay = {
      * param string prepayid
      * return object requestpay参数
      */
-    async getWxPayArg(code) {
-        let prepayid = await this.getPrepayID(code);
-        return new Promise((resolve, reject) => {
-            qcloud.request({
-                url: app.globalData.baseURL + 'xcx/order/paySign/' + prepayid,
-                method: 'GET',
-                login: true,
-                success: res => {
-                    resolve(res.data.returnObject)
-                },
-                fail(error) {
-                    app.showModel('请求失败', error);
-                    console.log('request fail', error);
-                },
-                complete() {
-                    console.log('request complete');
-                }
+    // async getWxPayArg(code) {
+    //     let prepayid = await this.getPrepayID(code);
+    //     return new Promise((resolve, reject) => {
+    //         qcloud.request({
+    //             url: app.globalData.baseURL + 'xcx/order/paySign/' + prepayid,
+    //             method: 'GET',
+    //             login: true,
+    //             success: res => {
+    //                 resolve(res.data.returnObject)
+    //             },
+    //             fail(error) {
+    //                 app.showModel('请求失败', error);
+    //                 console.log('request fail', error);
+    //             },
+    //             complete() {
+    //                 console.log('request complete');
+    //             }
+    //         });
+    //     });
+    // },
+    getWxPayArg(code) {
+        this.getPrepayID(code).then((prepayid) => {
+            return new Promise((resolve, reject) => {
+                qcloud.request({
+                    url: app.globalData.baseURL + 'xcx/order/paySign/' + prepayid,
+                    method: 'GET',
+                    login: true,
+                    success: res => {
+                        resolve(res.data.returnObject)
+                    },
+                    fail(error) {
+                        app.showModel('请求失败', error);
+                        console.log('request fail', error);
+                    },
+                    complete() {
+                        console.log('request complete');
+                    }
+                });
             });
         });
+        
     },
     /**
      * 调用小程序支付
@@ -73,21 +95,38 @@ var pay = {
      * param cb funciton 回调
      * return object requestpay参数
      */
-    async wxPay(code, cb) {
-    	let param = await this.getWxPayArg(code);
-    	wx.requestPayment({
-           timeStamp: param.timeStamp,
-           nonceStr: param.nonceStr,
-           package: param.package,
-           signType: param.signType,
-           paySign: param.paySign,
-           success: (res) => {
-                cb && cb(res);
-           },
-           fail: (res) => {
-                cb && cb(res);
-           }
-        })
+    // async wxPay(code, cb) {
+    // 	let param = await this.getWxPayArg(code);
+    // 	wx.requestPayment({
+    //        timeStamp: param.timeStamp,
+    //        nonceStr: param.nonceStr,
+    //        package: param.package,
+    //        signType: param.signType,
+    //        paySign: param.paySign,
+    //        success: (res) => {
+    //             cb && cb(res);
+    //        },
+    //        fail: (res) => {
+    //             cb && cb(res);
+    //        }
+    //     })
+    // }
+    wxPay(code, cb) {
+        this.getWxPayArg().then((code) => {
+            wx.requestPayment({
+                timeStamp: param.timeStamp,
+                nonceStr: param.nonceStr,
+                package: param.package,
+                signType: param.signType,
+                paySign: param.paySign,
+                success: (res) => {
+                    cb && cb(res);
+                },
+                fail: (res) => {
+                    cb && cb(res);
+                }
+            })
+        });
     }
 }
 

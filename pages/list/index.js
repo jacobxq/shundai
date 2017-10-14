@@ -19,7 +19,9 @@ Page({
         pageNo: 1,
         list: [],
         loading: false,
-        showLoading: false
+        showLoading: false,
+        total: 0,
+        noMoreList: false
     },
 
     /**
@@ -32,11 +34,15 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-        this.setData({
-            pageNo: this.data.pageNo + 1
-        })
-        this.setData({ loading: true });
-        this.getDataList()
+        if (this.data.list.length < this.data.total) {
+            this.setData({
+                pageNo: this.data.pageNo + 1
+            })
+            this.setData({ loading: true });
+            this.getDataList()
+        } else {
+            this.setData({ noMoreList: true })
+        }
     },
 
     startCityChange(e) {

@@ -51,13 +51,11 @@ Page({
     },
 
     navigatoCash() {
-        wx.redirectTo({url: './withdraw-cash/withdraw-cash?cash=' + this.data.cash})
-
-        // if (this.data.cash > 0) {
-        //     wx.redirectTo({url: './withdraw-cash/withdraw-cash?cash=' + this.data.cash})
-        // } else {
-        //     app.showModel('提示', '没有可提现金额');
-        // }
+        if (this.data.cash > 0) {
+            wx.redirectTo({url: './withdraw-cash/withdraw-cash?cash=' + this.data.cash})
+        } else {
+            app.showModel('提示', '没有可提现金额');
+        }
     }
 
 })

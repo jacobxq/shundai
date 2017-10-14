@@ -32,6 +32,13 @@
   animation: spin2 6s infinite linear;
 }
 
+.noMoreList {
+  text-align:center;
+  margin-top:20rpx;
+  font-size:30rpx;
+  color:#666;
+}
+
 @keyframes spin2 {
   0% {
     transform: rotate(0)

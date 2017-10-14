@@ -41,6 +41,9 @@
   <view wx:if="{{list.length == 0}}" class="no_list_data">暂无数据</view>
 </view>
 
+<view class="noMoreList" wx:if="{{list.length != 0 && noMoreList}}">
+  我是有底线的-。-
+</view>
 <view class="refresh-block" wx:if="{{loading}}">
  <image class="img" animation="{{refreshAnimation}}" src="../../images/refresh.png"></image>
 </view>

@@ -27,7 +27,7 @@ Page({
 			modal('请输入提现金额')
 			return;
 		}
-		if (this.data.cash > this.data.maxcash) {
+		if (this.data.cash > this.data.maxCash) {
 			modal('提现金额不得大于最大可提现金额')
 			return;
 		}

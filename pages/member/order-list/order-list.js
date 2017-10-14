@@ -17,7 +17,9 @@ Page({
             "PAID": '已支付',
             "SIGNED": '已签收',
             "CANCELED": '已取消'
-        }
+        },
+        total: 0,
+        noMoreList: false
     },
 
     /**
@@ -38,11 +40,16 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-        this.setData({
-            pageNo: this.data.pageNo + 1
-        })
-        this.setData({ loading: true });
-        this.getDataList()
+        if (this.data.list.length < this.data.total) {
+            this.setData({
+                pageNo: this.data.pageNo + 1
+            })
+            this.setData({ loading: true });
+            this.getDataList()
+        } else {
+            this.setData({ noMoreList: true })
+        }
+        
     },
 
     getDataList() {
@@ -65,7 +72,8 @@ Page({
                 that.setData({
                     loading: false,
                     showLoading: false,
-                    list: newList
+                    list: newList,
+                    total: res.data.total
                 })
             },
             fail(error) {
