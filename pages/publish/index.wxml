@@ -6,18 +6,18 @@
   <button bindtap="iWandtSend">我要托付</button>
 </view>
   <swiper indicator-dots="{{indicatorDots}}"
-  autoplay interval='2000' vertical circular>
-  <block wx:for="{{swiperData}}" wx:key="{{item}}" wx:if="{{swiperData.length == 0}}">
+  autoplay interval='2000' vertical circular wx:if="{{swiperData.length > 0}}">
+  <block wx:for="{{swiperData}}" wx:key="{{item}}">
     <swiper-item>
       <view>{{item}}</view>
     </swiper-item>
   </block>
-  <block>
-    <swiper-item>
-      <view>无</view>
-    </swiper-item>
-  </block>
 </swiper>
+<block wx:else>
+  <view class=".noList">
+    <view>无</view>
+  </view>
+</block>
 <view class="info">
   客服电话：<text bindtap="makePhone">{{phoneNumber}}</text> | <text bindtap="openAgreement">关于我们</text>
 </view>

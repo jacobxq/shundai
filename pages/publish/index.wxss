@@ -21,7 +21,8 @@
   color: #576B95;
 }
 
-swiper {
+swiper,
+.noList {
   text-align: center;
   height: 80rpx;
   font-size: 34rpx;
@@ -29,11 +30,16 @@ swiper {
   padding: 0 40rpx 40rpx;
 }
 
-swiper swiper-item {
+swiper swiper-item,
+.noList view {
 	background-color: #fff;
 	border-radius: 4rpx;
 }
 
 swiper swiper-item view {
 	padding-top: 16rpx;
+}
+
+.noList view {
+  line-height: 80rpx;
 }
