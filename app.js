@@ -15,7 +15,7 @@ App({
         wx.showToast({
             title: text || '加载中...',
             icon: 'loading',
-            duration: 10000
+            duration: 2000
         });
     },
     showSuccess(text) {

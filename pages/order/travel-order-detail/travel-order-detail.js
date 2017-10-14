@@ -2,6 +2,7 @@ const app = getApp()
 const globalData = app.globalData
 const modal = app.modal
 const qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index')
+const pay = require('../../../utils/pay.js')
 Page({
 	data: {
 		code: '',
@@ -63,11 +64,11 @@ Page({
                     cb && cb(res)
                 }
             },
-            fail(error) {
+            fail: (error) => {
                 app.showModel('请求失败', error);
                 console.log('request fail', error);
             },
-            complete() {
+            complete: () => {
                 console.log('request complete');
             }
         });
@@ -100,7 +101,22 @@ Page({
     },
     // 支付订单
     payOrder() {
-        console.log('支付')
+        console.log('travel支付')
+        pay.wxPay(this.data.code, (res) => {
+            if (res.errMsg == 'requestPayment:ok') {
+                let status = 'data.orderStatus'
+                let statusCn = 'data.orderStatusCn'
+                this.setData({
+                    [status]: 'PAID',
+                    [statusCn]: '已支付'
+                })
+                app.showLoading('支付成功');
+            } else if (res.errMsg == 'requestPayment:fail cancel') {
+                app.showLoading('取消支付');
+            } else {
+                app.showModel('支付失败', res);
+            }
+        })
     },
     // 签收
     signOrder() {

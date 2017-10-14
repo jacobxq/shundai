@@ -2,6 +2,7 @@ const app = getApp()
 const globalData = app.globalData
 const modal = app.modal
 const qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index')
+const pay = require('../../../utils/pay.js')
 Page({
     data: {
         code: '',
@@ -94,7 +95,58 @@ Page({
     },
     // 支付订单
     payOrder() {
-        console.log('支付')
+        console.log('send支付')
+        pay.wxPay(this.data.code, (res) => {
+            if (res.errMsg == 'requestPayment:ok') {
+                let status = 'data.orderStatus'
+                let statusCn = 'data.orderStatusCn'
+                this.setData({
+                    [status]: 'PAID',
+                    [statusCn]: '已支付'
+                })
+                app.showLoading('支付成功');
+            } else if (res.errMsg == 'requestPayment:fail cancel') {
+                app.showLoading('取消支付');
+            } else {
+                app.showModel('支付失败', res);
+            }
+        })
+        // qcloud.request({
+        //     url: globalData.baseURL + 'xcx/order/prepay',
+        //     method: 'GET',
+        //     login: true,
+        //     data: {
+        //         orderCode: this.data.code
+        //     },
+        //     success: res => {
+        //         if (res.data.result) {
+        //             console.log(res.data);
+        //             wx.requestPayment({
+        //                timeStamp: res.data.returnObject.timeStamp,
+        //                nonceStr: res.data.returnObject.nonceStr,
+        //                package: res.data.returnObject.package,
+        //                signType: res.data.returnObject.signType,
+        //                paySign: res.data.returnObject.paySign,
+        //                success: (res) => {
+                            
+        //                },
+        //                fail: (res) => {
+        //                     app.showModel('支付失败', res);
+        //                     console.log('request fail', error);
+        //                }
+        //             })
+        //         } else {
+        //             app.showModel('请求失败', res.data.returnMessage);
+        //         }
+        //     },
+        //     fail(error) {
+        //         app.showModel('请求失败', error);
+        //         console.log('request fail', error);
+        //     },
+        //     complete() {
+        //         console.log('request complete');
+        //     }
+        // });
     },
     // 签收
     signOrder() {

@@ -3,7 +3,7 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://admin.shundai66.com';
+var host = 'admin.shundai66.com/xcx';
 
 var config = {
 

@@ -62,8 +62,8 @@
 		<button bindtap="cancelOrder">取消</button>
 	</block>
 	<block wx:elif="{{data.orderStatus == 'PICKUP'}}">
-		<button bindtap="cancelOrder">取消</button>
   		<button type="primary" bindtap="payOrder">支付</button>
+		<button bindtap="cancelOrder">取消</button>
 	</block>
 	<block wx:elif="{{data.orderStatus == 'PAID'}}">
   		<button type="primary" bindtap="signOrder">签收</button>
