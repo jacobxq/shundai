@@ -26,7 +26,7 @@ Page({
     },
 
     wallet() {
-        app.showSuccess();
+        app.showSuccess('加载中...', 'loading');
         qcloud.request({
             // 要请求的地址
             url: app.globalData.baseURL + 'xcx/member/wallet',
@@ -48,6 +48,16 @@ Page({
                 console.log('request complete');
             }
         });
+    },
+
+    navigatoCash() {
+        wx.redirectTo({url: './withdraw-cash/withdraw-cash?cash=' + this.data.cash})
+
+        // if (this.data.cash > 0) {
+        //     wx.redirectTo({url: './withdraw-cash/withdraw-cash?cash=' + this.data.cash})
+        // } else {
+        //     app.showModel('提示', '没有可提现金额');
+        // }
     }
 
 })

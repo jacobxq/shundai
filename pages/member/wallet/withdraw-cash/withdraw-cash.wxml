@@ -1,12 +1,12 @@
 <view class="mt price">
 	<view class="price_name">提现金额</view>
 	<view class="input_box">
-		<text>￥</text><input bindinput="priceChange" placeholder="请填写提现金额"/>
+		<text>￥</text><input bindinput="cashChange" placeholder="请填写提现金额"/>
 	</view>
 </view>
 
 <view class="text mt">
-	最高可提现金额¥{{maxPrice}}
+	最高可提现金额¥{{maxCash}}
 </view>
 
 <view class="mt group">

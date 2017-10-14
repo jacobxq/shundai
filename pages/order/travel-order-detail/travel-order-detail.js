@@ -121,7 +121,7 @@ Page({
     // 签收
     signOrder() {
         modal('是否确认签收', () => {
-            this.operateOrder('SIGN', res => {
+            this.operateOrder('SIGNED', res => {
                 var status = 'data.orderStatus'
                 var statusCn = 'data.orderStatusCn'
                 this.setData({

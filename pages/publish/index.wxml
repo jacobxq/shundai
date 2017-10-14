@@ -5,11 +5,16 @@
   <button type="primary" bindtap="iWandtBring">我要顺带</button>
   <button bindtap="iWandtSend">我要托付</button>
 </view>
-<swiper indicator-dots="{{indicatorDots}}"
+  <swiper indicator-dots="{{indicatorDots}}"
   autoplay interval='2000' vertical circular>
-  <block wx:for="{{swiperData}}" wx:key="{{item}}">
+  <block wx:for="{{swiperData}}" wx:key="{{item}}" wx:if="{{swiperData.length == 0}}">
     <swiper-item>
       <view>{{item}}</view>
+    </swiper-item>
+  </block>
+  <block>
+    <swiper-item>
+      <view>无</view>
     </swiper-item>
   </block>
 </swiper>

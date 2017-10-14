@@ -11,17 +11,17 @@ App({
             phoneNumber: wx.getStorageSync('phoneNumber')
         })
     },
-    showLoading(text) {
+    showLoading(text = '加载中...', icon = 'loading') {
         wx.showToast({
-            title: text || '加载中...',
-            icon: 'loading',
+            title: text,
+            icon: icon,
             duration: 2000
         });
     },
-    showSuccess(text) {
+    showSuccess(text = '加载中...', icon = 'success') {
         wx.showToast({
             title: text,
-            icon: 'success'
+            icon: icon
         })
     },
     showModel(title, content) {
