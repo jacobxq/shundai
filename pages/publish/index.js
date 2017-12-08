@@ -182,7 +182,7 @@ Page({
                     modal('实名认证审核中，审核通过后才可以发起顺带需求');
                 } else {
                     modal('登陆后且实名认证的用户才能发起顺带需求', (res) => {
-                        wx.switchTab({ url: '../member/index' })
+                        wx.navigateTo({ url: '../member/real-name/real-name' })
                     })
                 }
             })
