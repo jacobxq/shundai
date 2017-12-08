@@ -17,7 +17,7 @@
 	<view class="person_message_info_title">寄件人信息</view>
 	<view class="person_message_info_detail">
 		<view class="name_phone">{{sender.name}}**</view>
-		<view class="address">********</view>
+		<view class="address">{{sender.address}}</view>
 	</view>
 </view>
 
@@ -25,7 +25,7 @@
 	<view class="person_message_info_title">收件人信息</view>
 	<view class="person_message_info_detail">
 		<view class="name_phone">{{recipients.name}}**</view>
-		<view class="address">********</view>
+		<view class="address">{{sender.address}}</view>
 	</view>
 </view>
 

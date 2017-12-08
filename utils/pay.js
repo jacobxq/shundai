@@ -1,5 +1,6 @@
 const app = getApp();
 const qcloud = require('../vendor/qcloud-weapp-client-sdk/index')
+const Promise = require('./es6-promise.js')
 
 var pay = {
     /**
@@ -68,8 +69,8 @@ var pay = {
     //     });
     // },
     getWxPayArg(code) {
-        this.getPrepayID(code).then((prepayid) => {
-            return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
+            this.getPrepayID(code).then((prepayid) => {
                 qcloud.request({
                     url: app.globalData.baseURL + 'xcx/order/paySign/' + prepayid,
                     method: 'GET',
@@ -112,7 +113,7 @@ var pay = {
     //     })
     // }
     wxPay(code, cb) {
-        this.getWxPayArg().then((code) => {
+        this.getWxPayArg(code).then((param) => {
             wx.requestPayment({
                 timeStamp: param.timeStamp,
                 nonceStr: param.nonceStr,
